@@ -43,8 +43,8 @@ namespace Integracao.Api
                 //ServiceURL = "http://localhost:8042"
             };
 
-            services.AddScoped<IDynamoDbContext<ResultadoIntegracaoModel>>(provider =>
-                            new DynamoDbContext<ResultadoIntegracaoModel>(new AmazonDynamoDBClient(clientConfig)));
+            services.AddScoped<IDynamoDbContext<IntegracaoModel>>(provider =>
+                            new DynamoDbContext<IntegracaoModel>(new AmazonDynamoDBClient(clientConfig)));
 
 
             services.AddControllers();

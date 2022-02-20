@@ -7,10 +7,10 @@ namespace Integracao.Api.Interfaces
 {
     public interface IIntegracaoRepository
     {
-        Task<ResultadoIntegracaoModel> GetByIdAsync(Guid codigoIntegracao, string nomeSistemaIntegracao);
+        Task<IntegracaoModel> GetByIdAsync(Guid codigoIntegracao, string nomeSistemaIntegracao);
         Task<int?> GetStatusAsync(string codigoIntegracao);
-        Task AddAsync(ResultadoIntegracaoModel resultadoIntegracao);
-        Task DeleteAsync(ResultadoIntegracaoModel resultadoIntegracao);
-        Task<IEnumerable<ResultadoIntegracaoModel>> GetAllAsync();
+        Task AddAsync(IntegracaoModel resultadoIntegracao);
+        Task DeleteAsync(IntegracaoModel resultadoIntegracao);
+        Task<IEnumerable<IntegracaoModel>> GetAllAsync();
     }
 }

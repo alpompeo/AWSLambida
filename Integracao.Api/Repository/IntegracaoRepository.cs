@@ -11,14 +11,14 @@ namespace Integracao.Api.Repository
 {
     public class IntegracaoRepository : IIntegracaoRepository
     {
-        private IDynamoDbContext<ResultadoIntegracaoModel> _context;
+        private IDynamoDbContext<IntegracaoModel> _context;
 
-        public IntegracaoRepository(IDynamoDbContext<ResultadoIntegracaoModel> context)
+        public IntegracaoRepository(IDynamoDbContext<IntegracaoModel> context)
         {
             _context = context;
         }
 
-        public async Task<ResultadoIntegracaoModel> GetByIdAsync(Guid codigoIntegracao, string nomeSistemaIntegracao)
+        public async Task<IntegracaoModel> GetByIdAsync(Guid codigoIntegracao, string nomeSistemaIntegracao)
         {
             //TODO: Exemplo utilizando Scan, mas não é performatico.
             //Utilzar somente quando não há um indice definido na tabela.
@@ -30,17 +30,17 @@ namespace Integracao.Api.Repository
             return (await _context.QueryAsync(codigoIntegracao.ToString(), QueryOperator.Equal, new object[] { nomeSistemaIntegracao })).SingleOrDefault();
         }
 
-        public async Task<IEnumerable<ResultadoIntegracaoModel>> GetAllAsync()
+        public async Task<IEnumerable<IntegracaoModel>> GetAllAsync()
         {
             return (await _context.ScanAsync(new List<ScanCondition>())).ToList();
         }
 
-        public async Task AddAsync(ResultadoIntegracaoModel resultadoIntegracao)
+        public async Task AddAsync(IntegracaoModel resultadoIntegracao)
         {
             await _context.Save(resultadoIntegracao);
         }
 
-        public async Task DeleteAsync(ResultadoIntegracaoModel resultadoIntegracao)
+        public async Task DeleteAsync(IntegracaoModel resultadoIntegracao)
         {
             await _context.DeleteByIdAsync(resultadoIntegracao);
         }

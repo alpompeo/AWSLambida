@@ -23,7 +23,7 @@ namespace Integracao.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ResultadoIntegracaoModel>> Get()
+        public async Task<IEnumerable<IntegracaoModel>> Get()
         {
             try
             {
@@ -53,7 +53,7 @@ namespace Integracao.Api.Controllers
 
         [HttpGet]
         [Route("{codigoIntegracao}/{nomeSistemaIntegracao}")]
-        public async Task<ResultadoIntegracaoModel> Get(Guid codigoIntegracao, string nomeSistemaIntegracao)
+        public async Task<IntegracaoModel> Get(Guid codigoIntegracao, string nomeSistemaIntegracao)
         {
             try
             {
@@ -68,16 +68,16 @@ namespace Integracao.Api.Controllers
 
         [HttpPost]
         [Route("add")]
-        public async Task<ResultadoIntegracaoModel> Add()
+        public async Task<IntegracaoModel> Add()
         {
             try
             {
-                var item = new ResultadoIntegracaoModel()
+                var item = new IntegracaoModel()
                 {
                     CodigoIntegracao = Guid.NewGuid(),
                     NomeSistemaIntegracao = "SISTEMA_" + new Random().Next(),
                     TextoIntegracaoResultado = "TEXTO_" + new Random().Next(),
-                    CodigoStatusIntegracao = EnumResultadoIntegracao.INTEGRACAO_INICIADA
+                    CodigoStatusIntegracao = EnumStatus.INTEGRACAO_INICIADA
                 };
 
                 await _repository.AddAsync(item);
@@ -93,11 +93,11 @@ namespace Integracao.Api.Controllers
 
         [HttpPut]
         [Route("update/{codigoIntegracao}/{nomeSistemaIntegracao}")]
-        public async Task<ResultadoIntegracaoModel> Update(Guid codigoIntegracao, string nomeSistemaIntegracao)
+        public async Task<IntegracaoModel> Update(Guid codigoIntegracao, string nomeSistemaIntegracao)
         {
             try
             {
-                var item = new ResultadoIntegracaoModel()
+                var item = new IntegracaoModel()
                 {
                     CodigoIntegracao = codigoIntegracao,
                     NomeSistemaIntegracao = nomeSistemaIntegracao,

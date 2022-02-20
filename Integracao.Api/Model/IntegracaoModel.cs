@@ -5,7 +5,7 @@ using System;
 namespace Integracao.Api.Model
 {
     [DynamoDBTable("TBF8059_ITGR_PLAT_ELET")]
-    public class ResultadoIntegracaoModel
+    public class IntegracaoModel
     {
         [DynamoDBHashKey("COD_IDEF_ITGR", typeof(GuidTypeConverter))]
         public Guid CodigoIntegracao { get; set; }
@@ -14,14 +14,14 @@ namespace Integracao.Api.Model
         public string NomeSistemaIntegracao { get; set; }
 
         [DynamoDBProperty("COD_STAT_ITGR")]
-        public EnumResultadoIntegracao CodigoStatusIntegracao { get; set; }
+        public EnumStatus CodigoStatusIntegracao { get; set; }
 
         [DynamoDBProperty("TXT_ITGR_RESU")]
         public string TextoIntegracaoResultado { get; set; }
     }
 
     [Flags]
-    public enum EnumResultadoIntegracao
+    public enum EnumStatus
     {
         INTEGRACAO_NAO_ENCONTRADA = 0,
         INTEGRACAO_FINALIZADA = 1,
