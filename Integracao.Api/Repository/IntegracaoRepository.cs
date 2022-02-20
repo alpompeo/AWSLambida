@@ -35,7 +35,7 @@ namespace Integracao.Api.Repository
             return (await _context.ScanAsync(new List<ScanCondition>())).ToList();
         }
 
-        public async Task AddAsync(IntegracaoModel resultadoIntegracao)
+        public async Task SaveAsync(IntegracaoModel resultadoIntegracao)
         {
             await _context.Save(resultadoIntegracao);
         }

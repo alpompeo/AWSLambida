@@ -9,7 +9,7 @@ namespace Integracao.Api.Interfaces
     {
         Task<IntegracaoModel> GetByIdAsync(Guid codigoIntegracao, string nomeSistemaIntegracao);
         Task<int?> GetStatusAsync(string codigoIntegracao);
-        Task AddAsync(IntegracaoModel resultadoIntegracao);
+        Task SaveAsync(IntegracaoModel resultadoIntegracao);
         Task DeleteAsync(IntegracaoModel resultadoIntegracao);
         Task<IEnumerable<IntegracaoModel>> GetAllAsync();
     }

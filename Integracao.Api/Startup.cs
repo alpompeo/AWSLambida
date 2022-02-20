@@ -6,11 +6,11 @@ using Integracao.Api.Repository;
 using Integracao.Api.Repository.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Sns.Message;
 
 namespace Integracao.Api
 {
@@ -45,8 +45,8 @@ namespace Integracao.Api
 
             services.AddScoped<IDynamoDbContext<IntegracaoModel>>(provider =>
                             new DynamoDbContext<IntegracaoModel>(new AmazonDynamoDBClient(clientConfig)));
-
-
+          
+            services.AddSnsMessage();
             services.AddControllers();
         }
 
