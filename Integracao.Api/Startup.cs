@@ -1,16 +1,15 @@
 using Amazon;
 using Amazon.DynamoDBv2;
+using AWS.Utilities.Core.IoC;
 using Integracao.Api.Interfaces;
 using Integracao.Api.Model;
 using Integracao.Api.Repository;
-using Integracao.Api.Repository.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Sns.Message;
 
 namespace Integracao.Api
 {
@@ -36,16 +35,13 @@ namespace Integracao.Api
             });
 
             services.AddScoped<IIntegracaoRepository, IntegracaoRepository>();
-
-            var clientConfig = new AmazonDynamoDBConfig()
+         
+            services.AddDynamoDB<IntegracaoModel>(new AmazonDynamoDBConfig()
             {
                 RegionEndpoint = RegionEndpoint.USWest2,
                 //ServiceURL = "http://localhost:8042"
-            };
+            });
 
-            services.AddScoped<IDynamoDbContext<IntegracaoModel>>(provider =>
-                            new DynamoDbContext<IntegracaoModel>(new AmazonDynamoDBClient(clientConfig)));
-          
             services.AddSnsMessage();
             services.AddControllers();
         }

@@ -1,5 +1,6 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
+using AWS.Utilities.Core.Dynamodb;
 using Integracao.Api.Interfaces;
 using Integracao.Api.Model;
 using System;

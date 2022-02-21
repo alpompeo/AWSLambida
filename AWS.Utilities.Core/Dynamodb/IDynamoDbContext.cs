@@ -3,7 +3,7 @@ using Amazon.DynamoDBv2.DocumentModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Integracao.Api.Interfaces
+namespace AWS.Utilities.Core.Dynamodb
 {
     public interface IDynamoDbContext<T>
     {

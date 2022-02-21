@@ -2,7 +2,7 @@
 using Amazon.DynamoDBv2.DocumentModel;
 using System;
 
-namespace Integracao.Api.Repository.Common
+namespace AWS.Utilities.Core.Dynamodb.DataTypes
 {
     public class GuidTypeConverter : IPropertyConverter
     {

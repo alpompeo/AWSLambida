@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Sns.Message
+namespace AWS.Utilities.Core.Sns
 {
     public interface ISnsMessage
     {

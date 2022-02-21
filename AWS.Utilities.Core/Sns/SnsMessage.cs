@@ -2,7 +2,7 @@
 using Amazon.SimpleNotificationService.Model;
 using System.Threading.Tasks;
 
-namespace Sns.Message
+namespace AWS.Utilities.Core.Sns
 {
     public class SnsMessage : ISnsMessage
     {

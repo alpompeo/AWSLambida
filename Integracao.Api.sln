@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integracao.Api", "Integracao.Api\Integracao.Api.csproj", "{1248D071-333E-4BE7-A316-AD44C356A1EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sns.Message", "Sns.Message\Sns.Message.csproj", "{DED38B30-49E6-4AA0-A0C0-816C8FCD943E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWS.Utilities.Core", "AWS.Utilities.Core\AWS.Utilities.Core.csproj", "{B16AC755-79F0-4CB7-9457-31514516FAF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{1248D071-333E-4BE7-A316-AD44C356A1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1248D071-333E-4BE7-A316-AD44C356A1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1248D071-333E-4BE7-A316-AD44C356A1EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DED38B30-49E6-4AA0-A0C0-816C8FCD943E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DED38B30-49E6-4AA0-A0C0-816C8FCD943E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DED38B30-49E6-4AA0-A0C0-816C8FCD943E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DED38B30-49E6-4AA0-A0C0-816C8FCD943E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B16AC755-79F0-4CB7-9457-31514516FAF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B16AC755-79F0-4CB7-9457-31514516FAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B16AC755-79F0-4CB7-9457-31514516FAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B16AC755-79F0-4CB7-9457-31514516FAF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,11 +1,10 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
-using Integracao.Api.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Integracao.Api.Repository.Common
+namespace AWS.Utilities.Core.Dynamodb
 {
     public class DynamoDbContext<T> : DynamoDBContext, IDynamoDbContext<T>
     {

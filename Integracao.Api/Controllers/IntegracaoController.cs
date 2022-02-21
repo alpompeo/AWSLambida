@@ -1,8 +1,8 @@
+using AWS.Utilities.Core.Sns;
 using Integracao.Api.Interfaces;
 using Integracao.Api.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Sns.Message;
 using System;
 using System.Linq;
 using System.Text;

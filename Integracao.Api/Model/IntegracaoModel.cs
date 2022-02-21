@@ -1,5 +1,5 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
-using Integracao.Api.Repository.Common;
+using AWS.Utilities.Core.Dynamodb.DataTypes;
 using System;
 
 namespace Integracao.Api.Model
