@@ -1,5 +1,6 @@
 ﻿using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;
+using System;
 using System.Threading.Tasks;
 
 namespace AWS.Utilities.Core.Sns
@@ -13,9 +14,12 @@ namespace AWS.Utilities.Core.Sns
             _snsMessage = snsMessage;
         }
 
-        public async Task<string> SmsMessage(string phoneNumber, string message)
+        public async Task<ResponseSns> SmsMessage(string phoneNumber, string message)
         {
-            string messageError = string.Empty;
+            var messageSns = new ResponseSns
+            {
+                HasError = false
+            };
 
             try
             {
@@ -27,12 +31,13 @@ namespace AWS.Utilities.Core.Sns
 
                 await _snsMessage.PublishAsync(request);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                messageError = ex.Message;
+                messageSns.Message = ex.Message;
+                messageSns.HasError = true;
             }
 
-            return messageError;
+            return messageSns;
         }
     }
 }

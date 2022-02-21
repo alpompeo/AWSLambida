@@ -80,10 +80,10 @@ namespace Integracao.Api.Controllers
 
             await _repository.SaveAsync(model);
 
-            var mwessageResult = await SmsMessage(model);
+            var responseSns = await SmsMessage(model);
 
-            if (mwessageResult != null)
-                return BadRequest(mwessageResult);
+            if (responseSns.HasError)
+                return BadRequest(responseSns.Message);
 
             return Ok(model);
         }
@@ -127,16 +127,21 @@ namespace Integracao.Api.Controllers
             return Ok();
         }
 
-        private async Task<string> SmsMessage(IntegracaoModel model)
+        private async Task<ResponseSns> SmsMessage(IntegracaoModel model)
         {
             var messageSms = new StringBuilder();
             messageSms.Append("Aws Sns Service");
             messageSms.AppendLine();
+            messageSms.AppendLine();
             messageSms.AppendFormat("CodigoIntegracao: {0}", model.CodigoIntegracao);
+            messageSms.AppendLine();
+            messageSms.AppendLine();
             messageSms.AppendFormat("NomeSistemaIntegracao: {0}", model.NomeSistemaIntegracao);
+            messageSms.AppendLine();
+            messageSms.AppendLine();
             messageSms.AppendFormat("TextoIntegracaoResultado: {0}", model.TextoIntegracaoResultado);
 
-           return await _snsMessage.SmsMessage("+Phone", messageSms.ToString());
+            return await _snsMessage.SmsMessage("+Phone", messageSms.ToString());
         }
     }
 }

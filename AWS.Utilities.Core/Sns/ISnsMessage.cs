@@ -4,6 +4,6 @@ namespace AWS.Utilities.Core.Sns
 {
     public interface ISnsMessage
     {
-        Task<string> SmsMessage(string phoneNumber, string message);
+        Task<ResponseSns> SmsMessage(string phoneNumber, string message);
     }
 }
