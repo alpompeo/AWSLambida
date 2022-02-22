@@ -46,11 +46,9 @@ namespace Integracao.Api.Repository
             await _context.DeleteByIdAsync(resultadoIntegracao);
         }
 
-        public async Task<int?> GetStatusAsync(string codigoIntegracao)
+        public async Task<EnumStatus?> GetStatusAsync(string codigoIntegracao)
         {
-            var result = (await _context.QueryAsync(codigoIntegracao.ToString())).FirstOrDefault();
-
-            return (int?)result?.CodigoStatusIntegracao;
+            return (await _context.QueryAsync(codigoIntegracao)).FirstOrDefault()?.CodigoStatusIntegracao;
         }
     }
 }

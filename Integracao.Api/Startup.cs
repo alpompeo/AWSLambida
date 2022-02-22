@@ -33,14 +33,14 @@ namespace Integracao.Api
                     Title = "Integração API",
                 });
             });
-
-            services.AddScoped<IIntegracaoRepository, IntegracaoRepository>();
          
             services.AddDynamoDB<IntegracaoModel>(new AmazonDynamoDBConfig()
             {
                 RegionEndpoint = RegionEndpoint.USWest2,
                 //ServiceURL = "http://localhost:8042"
             });
+
+            services.AddScoped<IIntegracaoRepository, IntegracaoRepository>();
 
             services.AddSnsMessage();
             services.AddControllers();
@@ -52,16 +52,12 @@ namespace Integracao.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-               
             }
 
             app.UseSwagger();
             app.UseSwaggerUI();
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

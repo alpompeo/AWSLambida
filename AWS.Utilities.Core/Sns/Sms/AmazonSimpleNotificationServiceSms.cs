@@ -3,22 +3,23 @@ using Amazon.SimpleNotificationService.Model;
 using System;
 using System.Threading.Tasks;
 
-namespace AWS.Utilities.Core.Sns
+namespace AWS.Utilities.Core.Sns.Sms
 {
-    public class SnsMessage : ISnsMessage
+    public class AmazonSimpleNotificationServiceSms : IAmazonSimpleNotificationServiceSms
     {
         private readonly AmazonSimpleNotificationServiceClient _snsMessage;
 
-        public SnsMessage(AmazonSimpleNotificationServiceClient snsMessage)
+        public AmazonSimpleNotificationServiceSms(AmazonSimpleNotificationServiceClient snsMessage)
         {
             _snsMessage = snsMessage;
         }
 
-        public async Task<ResponseSns> SmsMessage(string phoneNumber, string message)
+        public async Task<AmazonSimpleNotificationServiceResponse> SendMessageAsync(string phoneNumber, string message)
         {
-            var messageSns = new ResponseSns
+            var messageSns = new AmazonSimpleNotificationServiceResponse
             {
-                HasError = false
+                HasError = false,
+                MessageError = string.Empty
             };
 
             try
@@ -33,7 +34,7 @@ namespace AWS.Utilities.Core.Sns
             }
             catch (Exception ex)
             {
-                messageSns.Message = ex.Message;
+                messageSns.MessageError = ex.Message;
                 messageSns.HasError = true;
             }
 

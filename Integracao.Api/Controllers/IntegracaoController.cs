@@ -1,4 +1,4 @@
-using AWS.Utilities.Core.Sns;
+using AWS.Utilities.Core.Sns.Sms;
 using Integracao.Api.Interfaces;
 using Integracao.Api.Model;
 using Microsoft.AspNetCore.Http;
@@ -15,10 +15,10 @@ namespace Integracao.Api.Controllers
     public class IntegracaoController : ControllerBase
     {
         private readonly IIntegracaoRepository _repository;
-        private readonly ISnsMessage _snsMessage;
+        private readonly IAmazonSimpleNotificationServiceSms _snsMessage;
 
         public IntegracaoController(IIntegracaoRepository repository,
-                                    ISnsMessage snsMessage)
+                                    IAmazonSimpleNotificationServiceSms snsMessage)
         {
             _repository = repository;
             _snsMessage = snsMessage;
@@ -80,10 +80,10 @@ namespace Integracao.Api.Controllers
 
             await _repository.SaveAsync(model);
 
-            var responseSns = await SmsMessage(model);
+            var responseSns = await SendMessageSms(model);
 
             if (responseSns.HasError)
-                return BadRequest(responseSns.Message);
+                return BadRequest(responseSns.MessageError);
 
             return Ok(model);
         }
@@ -127,7 +127,7 @@ namespace Integracao.Api.Controllers
             return Ok();
         }
 
-        private async Task<ResponseSns> SmsMessage(IntegracaoModel model)
+        private async Task<AmazonSimpleNotificationServiceResponse> SendMessageSms(IntegracaoModel model)
         {
             var messageSms = new StringBuilder();
             messageSms.Append("Aws Sns Service");
@@ -141,7 +141,7 @@ namespace Integracao.Api.Controllers
             messageSms.AppendLine();
             messageSms.AppendFormat("TextoIntegracaoResultado: {0}", model.TextoIntegracaoResultado);
 
-            return await _snsMessage.SmsMessage("+Phone", messageSms.ToString());
+            return await _snsMessage.SendMessageAsync("+Phone", messageSms.ToString());
         }
     }
 }

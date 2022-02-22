@@ -8,7 +8,7 @@ namespace Integracao.Api.Interfaces
     public interface IIntegracaoRepository
     {
         Task<IntegracaoModel> GetByIdAsync(Guid codigoIntegracao, string nomeSistemaIntegracao);
-        Task<int?> GetStatusAsync(string codigoIntegracao);
+        Task<EnumStatus?> GetStatusAsync(string codigoIntegracao);
         Task SaveAsync(IntegracaoModel resultadoIntegracao);
         Task DeleteAsync(IntegracaoModel resultadoIntegracao);
         Task<IEnumerable<IntegracaoModel>> GetAllAsync();
